@@ -30,6 +30,7 @@ skip_sizes = [
     'Minutos',
     'Panatella',
     'Panatela',
+    'Panetela',
     'Panetelas',
     'Coronita',
     'Short',
