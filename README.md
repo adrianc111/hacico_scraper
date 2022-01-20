@@ -9,4 +9,5 @@ Todo
 - Make skip_sizes configurable
 - Move settings to .env
 - Write tests
-- Add more data to sheet
+- Add more columns to the sheet
+- Potentially switch to markdown
