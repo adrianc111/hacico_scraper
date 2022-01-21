@@ -36,16 +36,8 @@ skip_sizes = [
     'Short',
     'Shorts',
     'Petit Royales',
-    # 'Corona',
-    # 'Petit Corona',
-    # 'Gran Corona',
-    # 'Half Corona',
-    # 'Robusto',
-    # 'Toro',
-    # 'Gran Toro',
-    # 'Churchill',
+    'Senoritas',
 ]
-
 
 def main():
     countries = parse_page(BASE_URL, '.meineListe > div > a')
@@ -66,6 +58,9 @@ def parse_cigar_page_info(country_title, href):
     req = requests.get(href)
     soup = bs(req.content, 'html.parser')
     cigar_info = soup.select_one('.product_info_box')
+
+    if not cigar_info:
+        return False
 
     photo = cigar_info.select('.product_info_box_middle_left img')
     title_h1 = cigar_info.select('.product_info_box_middle_left h1')
@@ -109,7 +104,10 @@ def parse_cigar_page_info(country_title, href):
 def parse_items_on_page(country_title, cigar_url):
     cigar_links = parse_page(cigar_url, '.product_listing_box_name a')
     for cigar in cigar_links:
-        parse_cigar_page_info(country_title, cigar['href'])
+        try:
+            parse_cigar_page_info(country_title, cigar['href'])
+        except:
+            continue
 
 
 def get_next_pages(cigar_url):
