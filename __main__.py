@@ -146,7 +146,7 @@ if __name__ == '__main__':
     #     sys.exit("Other instance of youtube-dl is already running")
     # else:
     # writing to csv file
-    with open(os.environ.get('RESULT_FILE_PATH'), 'w') as csvfile:
+    with open(str(os.environ.get('RESULT_FILE_PATH')), 'w') as csvfile:
         # creating a csv dict writer object
         writer = csv.DictWriter(csvfile, fieldnames=fields)
         # writing headers (field names)
