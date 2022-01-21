@@ -1,3 +1,4 @@
 /.idea
 hacico.csv
 errors.log
+.env

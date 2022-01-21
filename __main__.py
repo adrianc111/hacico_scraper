@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import csv
+import os
 import re
 import requests as requests
 from bs4 import BeautifulSoup as bs
@@ -141,8 +142,11 @@ def number_format(price):
 
 
 if __name__ == '__main__':
+    # if is_process_running('youtube-dl'):
+    #     sys.exit("Other instance of youtube-dl is already running")
+    # else:
     # writing to csv file
-    with open("hacico.csv", 'w') as csvfile:
+    with open(os.environ.get('RESULT_FILE_PATH'), 'w') as csvfile:
         # creating a csv dict writer object
         writer = csv.DictWriter(csvfile, fieldnames=fields)
         # writing headers (field names)
