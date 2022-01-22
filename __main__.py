@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import csv
+import os
 import re
 import requests as requests
 from bs4 import BeautifulSoup as bs
@@ -145,10 +146,14 @@ if __name__ == '__main__':
     #     sys.exit("Other instance of youtube-dl is already running")
     # else:
     # writing to csv file
-    with open('/ssd/Other/hacico.csv', 'w') as csvfile:
+    tmp_file_path = '/ssd/Other/hacico.tmp'
+    csv_file_path = '/ssd/Other/hacico.csv'
+    with open(tmp_file_path, 'w') as csvfile:
         # creating a csv dict writer object
         writer = csv.DictWriter(csvfile, fieldnames=fields)
         # writing headers (field names)
         writer.writeheader()
 
         main()
+
+    os.rename(tmp_file_path, csv_file_path)
