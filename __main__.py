@@ -40,6 +40,7 @@ skip_sizes = [
     'Senoritas',
 ]
 
+
 def main():
     countries = parse_page(BASE_URL, '.meineListe > div > a')
 
